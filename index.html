@@ -1,1 +1,93 @@
-Hello World
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Michael Hirschmugl - Portfolio</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Inter', sans-serif;
+      background: #f9f9f9;
+      color: #333;
+    }
+    header {
+      background: #1f2937;
+      color: white;
+      padding: 2rem;
+      text-align: center;
+    }
+    header h1 {
+      margin: 0;
+      font-size: 2.5rem;
+    }
+    header p {
+      margin-top: 0.5rem;
+      font-size: 1.2rem;
+    }
+    .container {
+      max-width: 900px;
+      margin: 2rem auto;
+      padding: 0 1rem;
+    }
+    .profile {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 1rem;
+    }
+    .profile img {
+      width: 160px;
+      height: 160px;
+      border-radius: 50%;
+      object-fit: cover;
+      background: #ddd;
+    }
+    .links a {
+      margin: 0 0.5rem;
+      text-decoration: none;
+      color: #1f2937;
+      font-weight: 600;
+    }
+    .links a:hover {
+      text-decoration: underline;
+    }
+    .github-feed {
+      margin-top: 2rem;
+    }
+    iframe {
+      border: none;
+      width: 100%;
+      height: 600px;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Michael Hirschmugl</h1>
+    <p>Application Engineer | Mass Spectrometry Enthusiast | Hardware Developer</p>
+  </header>
+
+  <div class="container">
+    <div class="profile">
+      <img src="https://via.placeholder.com/160" alt="Profilfoto">
+      <p>Willkommen auf meiner Portfolioseite. Hier findest du Informationen zu meinen Projekten, Publikationen und aktuellen Tätigkeiten.</p>
+    </div>
+
+    <div class="links">
+      <h2>Links</h2>
+      <p>
+        <a href="https://github.com/michael-hirschmugl" target="_blank">GitHub</a>
+        <a href="https://www.linkedin.com/in/michael-hirschmugl" target="_blank">LinkedIn</a>
+        <a href="https://ieeexplore.ieee.org/author/37089738864" target="_blank">IEEE Xplore</a>
+      </p>
+    </div>
+
+    <div class="github-feed">
+      <h2>GitHub Aktivitäten</h2>
+      <iframe src="https://github-readme-stats.vercel.app/api?username=michael-hirschmugl&show_icons=true&theme=default" allowtransparency="true"></iframe>
+    </div>
+  </div>
+</body>
+</html>
