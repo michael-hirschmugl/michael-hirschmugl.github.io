@@ -6,14 +6,38 @@
   <title>Michael Hirschmugl - Portfolio</title>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
   <style>
+    :root {
+      --bg: #f0f4f8;
+      --text: #1e293b;
+      --primary: #3b82f6;
+      --header-bg: linear-gradient(135deg, #1e3a8a, #3b82f6);
+      --link: #2563eb;
+      --footer-bg: #1e3a8a;
+    }
+
+    @media (prefers-color-scheme: dark) {
+      :root {
+        --bg: #0f172a;
+        --text: #e2e8f0;
+        --primary: #60a5fa;
+        --header-bg: linear-gradient(135deg, #1e40af, #60a5fa);
+        --link: #93c5fd;
+        --footer-bg: #1e3a8a;
+      }
+    }
+
+    * {
+      transition: all 0.3s ease-in-out;
+    }
+
     body {
       margin: 0;
       font-family: 'Inter', sans-serif;
-      background: #f9f9f9;
-      color: #333;
+      background: var(--bg);
+      color: var(--text);
     }
     header {
-      background: #1f2937;
+      background: var(--header-bg);
       color: white;
       padding: 2rem;
       text-align: center;
@@ -21,10 +45,12 @@
     header h1 {
       margin: 0;
       font-size: 2.5rem;
+      animation: fadeInDown 1s ease;
     }
     header p {
       margin-top: 0.5rem;
       font-size: 1.2rem;
+      animation: fadeInUp 1.2s ease;
     }
     .container {
       max-width: 900px;
@@ -36,18 +62,19 @@
       flex-direction: column;
       align-items: center;
       gap: 1rem;
+      animation: fadeIn 1s ease;
     }
     .profile img {
       width: 160px;
       height: 160px;
       border-radius: 50%;
       object-fit: cover;
-      background: #ddd;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
     }
     .links a {
       margin: 0 0.5rem;
       text-decoration: none;
-      color: #1f2937;
+      color: var(--link);
       font-weight: 600;
     }
     .links a:hover {
@@ -64,6 +91,7 @@
     }
     .projects, .publications {
       margin-top: 2rem;
+      animation: fadeIn 0.8s ease;
     }
     .projects ul, .publications ul {
       list-style: none;
@@ -73,7 +101,7 @@
       margin-bottom: 1rem;
     }
     .projects a, .publications a {
-      color: #1f2937;
+      color: var(--primary);
       font-weight: 600;
       text-decoration: none;
     }
@@ -81,7 +109,7 @@
       text-decoration: underline;
     }
     footer {
-      background: #1f2937;
+      background: var(--footer-bg);
       color: white;
       text-align: center;
       padding: 1rem;
@@ -90,17 +118,30 @@
       width: 100%;
       font-size: 0.9rem;
     }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    @keyframes fadeInDown {
+      from { opacity: 0; transform: translateY(-30px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    @keyframes fadeInUp {
+      from { opacity: 0; transform: translateY(30px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
   </style>
 </head>
 <body>
   <header>
     <h1>Michael Hirschmugl</h1>
-    <p>Application Engineer | Mass Spectrometry Enthusiast | Hardware Developer</p>
+    <p>I enjoy developing firmware and hardware, working with Linux, and exploring retro video game consoles.</p>
   </header>
 
   <div class="container">
     <div class="profile">
-      <img src="https://via.placeholder.com/160" alt="Profile photo">
+      <img src="9955664.jpeg" alt="Profile photo">
       <p>Welcome to my portfolio. Here you'll find information about my projects, publications, and current activities.</p>
     </div>
 
@@ -108,8 +149,8 @@
       <h2>Links</h2>
       <p>
         <a href="https://github.com/michael-hirschmugl" target="_blank">GitHub</a>
-        <a href="https://www.linkedin.com/in/michael-hirschmugl" target="_blank">LinkedIn</a>
-        <a href="https://ieeexplore.ieee.org/author/37089738864" target="_blank">IEEE Xplore</a>
+        <a href="https://www.linkedin.com/in/michael-hirschmugl/" target="_blank">LinkedIn</a>
+        <a href="https://ieeexplore.ieee.org/author/37089575377" target="_blank">IEEE Xplore</a>
       </p>
     </div>
 
@@ -119,6 +160,22 @@
         <li>
           <a href="https://hackaday.io/project/162633-snes-drone" target="_blank">SNES-Drone</a><br>
           A creative hardware project turning the Super Nintendo's sound chip (SPC700) into a drone synthesizer using a custom cartridge.
+        </li>
+        <li>
+          <a href="https://github.com/michael-hirschmugl/ps2-blueretro" target="_blank">PS2 BlueRetro</a><br>
+          A hardware mod to add Bluetooth gamepad support to the PlayStation 2 using an ESP32-based adapter.
+        </li>
+        <li>
+          <a href="https://github.com/michael-hirschmugl/SNESDRONE" target="_blank">SNESDRONE</a><br>
+          A project to control the SNES sound chip via custom cartridges for real-time music synthesis.
+        </li>
+        <li>
+          <a href="https://github.com/michael-hirschmugl/open-hw-cnn" target="_blank">open-hw-cnn</a><br>
+          An open-source hardware accelerator framework for convolutional neural networks on FPGAs.
+        </li>
+        <li>
+          <a href="https://github.com/michael-hirschmugl/sun_follower" target="_blank">sun_follower</a><br>
+          A FreeRTOS-based embedded firmware project to track and follow sunlight using motorized hardware.
         </li>
       </ul>
     </div>
