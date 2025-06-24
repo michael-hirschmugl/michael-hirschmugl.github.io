@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+
+<html lang="de">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Meine Startseite</title>
+<!-- Inter Font -->
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&amp;display=swap" rel="stylesheet"/>
+<!-- Font Awesome Icons -->
+<link crossorigin="anonymous" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" integrity="sha512-bxj6CNjY3bT2Cnx2Mg6PBDQ5TLZf0jUPnZWk2m+AeTZzGNC+6yRAys0cPhznTgVDRuzsZPSMjbvcc39t3nPPAw==" referrerpolicy="no-referrer" rel="stylesheet"/>
+<style>
+      :root {
+        --bg: #111827;           /* Slate-900 */
+        --bg-gradient: radial-gradient(circle at 20% 30%, #374151 0%, #111827 60%);
+        --card-bg: #1f2937;      /* Slate-800 */
+        --border: #374151;       /* Slate-700 */
+        --text: #e5e7eb;         /* Slate-200 */
+        --muted: #9ca3af;        /* Slate-400 */
+        --primary: #60a5fa;      /* Blue-400 */
+        --shadow: rgba(0, 0, 0, 0.4);
+      }
+
+      * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
+
+      body {
+        font-family: 'Inter', system-ui, sans-serif;
+        background: var(--bg-gradient);
+        color: var(--text);
+        min-height: 100vh;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        padding: 3rem 1rem;
+        gap: 2rem;
+      }
+
+      h1 {
+        font-size: 2.25rem;
+        font-weight: 600;
+        letter-spacing: -0.02em;
+        text-align: center;
+      }
+
+      /* --- Card Grid --- */
+      .grid {
+        width: 100%;
+        max-width: 1200px;
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+        gap: 1.5rem;
+      }
+
+      .card {
+        background: var(--card-bg);
+        border: 1px solid var(--border);
+        border-radius: 16px;
+        padding: 1.75rem 1.5rem;
+        box-shadow: 0 6px 12px var(--shadow);
+        transition: transform 0.15s ease, box-shadow 0.15s ease;
+        position: relative;
+        overflow: hidden;
+      }
+
+      .card:hover {
+        transform: translateY(-4px);
+        box-shadow: 0 8px 20px var(--shadow);
+      }
+
+      .card h2 {
+        font-size: 1.25rem;
+        font-weight: 500;
+        margin-bottom: 1.25rem;
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+      }
+
+      .card h2 i {
+        color: var(--primary);
+      }
+
+      .links a {
+        display: block;
+        margin-bottom: 0.65rem;
+        text-decoration: none;
+        color: var(--primary);
+        font-weight: 500;
+        transition: opacity 0.15s ease;
+      }
+
+      .links a:hover {
+        opacity: 0.8;
+      }
+
+      /* --- Bookmarks --- */
+      .bookmarks-section {
+        width: 100%;
+        max-width: 1200px;
+      }
+
+      .bookmark-card {
+        width: 100%;
+      }
+
+      .bookmark-list {
+        list-style: none;
+        display: flex;
+        flex-direction: column;
+        gap: 0.85rem;
+      }
+
+      .bookmark-list a {
+        text-decoration: none;
+        color: var(--primary);
+        font-weight: 500;
+        line-height: 1.4;
+        transition: opacity 0.15s ease;
+      }
+
+      .bookmark-list a:hover {
+        opacity: 0.8;
+      }
+
+      footer {
+        margin-top: auto;
+        text-align: center;
+        font-size: 0.85rem;
+        color: var(--muted);
+      }
+    </style>
+</head>
+<body>
+<h1>Willkommen, Michael 👋</h1>
+<!-- ---------- Link Grid ---------- -->
+<div class="grid">
+<!-- Immich -->
+<div class="card">
+<h2><i class="fa-solid fa-image"></i> Immich</h2>
+<div class="links">
+<a href="https://immich.michael-hirschmugl.com" target="_blank">Remote</a>
+<a href="http://192.168.0.30:2283/auth/login" target="_blank">Lokal</a>
+</div>
+</div>
+<!-- Jellyfin -->
+<div class="card">
+<h2><i class="fa-solid fa-film"></i> Jellyfin</h2>
+<div class="links">
+<a href="https://jellyfin.michael-hirschmugl.com" target="_blank">Remote</a>
+<a href="http://192.168.0.245:8096" target="_blank">Lokal</a>
+</div>
+</div>
+<!-- Nextcloud -->
+<div class="card">
+<h2><i class="fa-solid fa-cloud"></i> Nextcloud</h2>
+<div class="links">
+<a href="https://nextcloud.michael-hirschmugl.com" target="_blank">Remote</a>
+<a href="https://192.168.0.194/index.php/login" target="_blank">Lokal</a>
+</div>
+</div>
+<!-- OpenWebUI -->
+<div class="card">
+<h2><i class="fa-solid fa-robot"></i> OpenWebUI</h2>
+<div class="links">
+<a href="https://openwebui.michael-hirschmugl.com" target="_blank">Remote</a>
+<a href="http://192.168.0.245:8080/auth" target="_blank">Lokal</a>
+</div>
+</div>
+<!-- LiteLLM -->
+<div class="card">
+<h2><i class="fa-solid fa-brain"></i> LiteLLM</h2>
+<div class="links">
+<a href="http://192.168.0.245:4000/" target="_blank">Server</a>
+</div>
+</div>
+<!-- AI -->
+<div class="card">
+<h2><i class="fa-brands fa-openai"></i> AI</h2>
+<div class="links">
+<a href="https://chatgpt.com/" target="_blank">chatgpt.com</a>
+<a href="https://platform.openai.com/docs/overview" target="_blank">OpenAI developer platform</a>
+<a href="https://openrouter.ai/" target="_blank">openrouter.ai</a>
+</div>
+</div>
+<!-- GitHub -->
+<div class="card">
+<h2><i class="fa-brands fa-github"></i> GitHub</h2>
+<div class="links">
+<a href="https://github.com/michael-hirschmugl/" target="_blank">Profil</a>
+</div>
+</div>
+<!-- Online Compiler -->
+<div class="card">
+<h2><i class="fa-solid fa-code"></i> Online Compiler</h2>
+<div class="links">
+<a href="https://www.programiz.com/cpp-programming/online-compiler/" target="_blank">C++</a>
+<a href="https://www.programiz.com/c-programming/online-compiler/" target="_blank">C</a>
+<a href="https://www.programiz.com/python-programming/online-compiler/" target="_blank">Python</a>
+</div>
+</div>
+</div>
+<!-- ---------- Bookmarks Section ---------- -->
+<section class="bookmarks-section">
+<div class="card bookmark-card">
+<h2><i class="fa-solid fa-bookmark"></i> Bookmarks</h2>
+<ul class="bookmark-list">
+<!-- ► Hier weitere <li>...</li> einfügen ◄ -->
+<li><a href="https://serv.readthedocs.io/en/latest/datasheet.html" target="_blank">SERV ist ein extrem kleiner, bitserieller RISC-V-Prozessor, der speziell für minimale Ressourcennutzung optimiert ist. Die Seite bietet technische Details zu Architektur, Ressourcenverbrauch und Einsatzmöglichkeiten. Ideal für FPGAs mit sehr begrenztem Platz.</a></li><li><a href="https://www.wevolver.com/article/the-ultimate-guide-to-asic-design-from-concept-to-production" target="_blank">Die verlinkte Wevolver-Seite ist ein ultimativer Leitfaden für ASIC-Design, der den gesamten Prozess von der Konzeptphase über Spezifikation, RTL-Codierung und Verifikation bis zur physischen Realisierung und Fertigung beschreibt. Sie erklärt zentrale technische Konzepte wie PPA (Performance, Power, Area), beleuchtet Entscheidungsprozesse und zeigt typische Workflow-Schritte praxisnah.</a></li><li><a href="https://www.youtube.com/watch?v=cqL3jvlU61c" target="_blank">Ein inspirierendes Video des Kanals Tariq10x, das erklärt, warum das Programmieren von Spielen wie DOOM oft praktische Fähigkeiten vermittelt, die in klassischen Informatikstudiengängen häufig fehlen. Es zeigt anschaulich, wie man mit begrenzten Ressourcen, Low-Level-Programmierung und echter Codeoptimierung greifbare Lernerfolge erzielt, die über theoretische Lehre hinausgehen.</a></li><li><a href="https://www.youtube.com/watch?v=L9jvLsvkmdM" target="_blank">Ein informatives Vortragvideo von Erik Engheim auf der ACCU 2022-Konferenz, das die Genialität der RISC‑V Mikroprozessoren und ihre modulare, offene Architektur beleuchtet. Es zeigt, wie RISC‑V im Vergleich zu herkömmlichen, geschlossenen Architektur‑Standards durch Einfachheit und Flexibilität punktet.</a></li><li><a href="https://www.programiz.com/online-compiler/2MLt7obe4ngDd" target="_blank">C++ Code Heapsort</a></li></ul>
+</div>
+</section>
+<footer>© 2025 Michael Hirschmugl</footer>
+</body>
+</html>
