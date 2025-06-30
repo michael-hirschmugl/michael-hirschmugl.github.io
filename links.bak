@@ -170,13 +170,14 @@
 <div class="links">
 <a href="https://openwebui.michael-hirschmugl.com" target="_blank">Remote</a>
 <a href="http://192.168.0.245:8080/auth" target="_blank">Lokal</a>
+<a href="http://192.168.0.245:4000/" target="_blank">LiteLLM</a>
 </div>
 </div>
-<!-- LiteLLM -->
+<!-- Other -->
 <div class="card">
-<h2><i class="fa-solid fa-brain"></i> LiteLLM</h2>
+<h2><i class="fa-solid fa-brain"></i> Other</h2>
 <div class="links">
-<a href="http://192.168.0.245:4000/" target="_blank">Server</a>
+<a href="https://www.cloudflare.com/" target="_blank">cloudflare</a>
 </div>
 </div>
 <!-- AI -->
