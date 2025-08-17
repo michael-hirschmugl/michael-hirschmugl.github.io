@@ -68,6 +68,19 @@
         overflow: hidden;
       }
 
+      .card .links a {
+        position: relative;
+        padding-left: 1.1em;
+      }
+
+      .card .links a::before {
+        content: "–";
+        position: absolute;
+        left: 0;
+        color: var(--primary);
+        font-weight: 500;
+      }
+
       .card:hover {
         transform: translateY(-4px);
         box-shadow: 0 8px 20px var(--shadow);
@@ -176,6 +189,7 @@
 <div class="card">
 <h2><i class="fa-solid fa-brain"></i> Other</h2>
 <div class="links">
+<a href="https://proxmox.mugl.bid" target="_blank">Proxmox</a>
 <a href="https://dash.cloudflare.com/login" target="_blank">Cloudflare</a>
 </div>
 </div>
@@ -183,6 +197,7 @@
 <div class="card">
 <h2><i class="fa-brands fa-openai"></i> AI</h2>
 <div class="links">
+<a href="https://duck.ai" target="_blank">Duck.ai</a>
 <a href="https://chatgpt.com/" target="_blank">chatgpt.com</a>
 <a href="https://platform.openai.com/docs/overview" target="_blank">OpenAI developer platform</a>
 <a href="https://copilot.microsoft.com/" target="_blank">Microsoft Copilot</a>
