@@ -1,203 +1,527 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Michael Hirschmugl - Portfolio</title>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Michael Hirschmugl — Embedded & FPGA Engineer</title>
+  <meta name="description" content="Embedded Systems & FPGA Engineer. C/C++, ARM, RISC-V, HW/SW co-design, hardware-efficient ML." />
+  <meta name="color-scheme" content="light dark" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+
   <style>
-    :root {
-      --bg: #f0f4f8;
-      --text: #1e293b;
-      --primary: #3b82f6;
-      --header-bg: linear-gradient(135deg, #1e3a8a, #3b82f6);
-      --link: #2563eb;
-      --footer-bg: #1e3a8a;
+    :root{
+      --bg: #0b1220;
+      --surface: #0f1a2e;
+      --surface-2: #0c1730;
+      --text: #e6edf7;
+      --muted: #b6c2d6;
+      --border: rgba(255,255,255,0.10);
+      --shadow: 0 16px 40px rgba(0,0,0,0.35);
+
+      --brand: #60a5fa;
+      --brand-2: #2563eb;
+      --good: #34d399;
+
+      --radius: 18px;
+      --max: 1020px;
     }
 
-    @media (prefers-color-scheme: dark) {
-      :root {
-        --bg: #0f172a;
-        --text: #e2e8f0;
-        --primary: #60a5fa;
-        --header-bg: linear-gradient(135deg, #1e40af, #60a5fa);
-        --link: #93c5fd;
-        --footer-bg: #1e3a8a;
+    @media (prefers-color-scheme: light){
+      :root{
+        --bg: #f4f7fb;
+        --surface: #ffffff;
+        --surface-2: #f7fbff;
+        --text: #0f172a;
+        --muted: #4b5563;
+        --border: rgba(2,6,23,0.10);
+        --shadow: 0 14px 32px rgba(2,6,23,0.10);
+
+        --brand: #2563eb;
+        --brand-2: #1d4ed8;
+        --good: #059669;
       }
     }
 
-    * {
-      transition: all 0.3s ease-in-out;
+    * { box-sizing: border-box; }
+    html, body { height: 100%; }
+    body{
+      margin:0;
+      font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+      background: radial-gradient(900px 600px at 20% 0%, rgba(96,165,250,0.16), transparent 60%),
+                  radial-gradient(700px 500px at 90% 10%, rgba(37,99,235,0.12), transparent 55%),
+                  var(--bg);
+      color: var(--text);
+      line-height: 1.55;
     }
 
-    body {
-      margin: 0;
-      font-family: 'Inter', sans-serif;
-      background: var(--bg);
+    a{ color: inherit; }
+    a:focus-visible, button:focus-visible{
+      outline: 3px solid rgba(96,165,250,0.55);
+      outline-offset: 3px;
+      border-radius: 12px;
+    }
+
+    .wrap{
+      max-width: var(--max);
+      margin: 0 auto;
+      padding: 28px 18px 64px;
+    }
+
+    /* Top bar */
+    .top{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap: 14px;
+      padding: 10px 0 22px;
+    }
+    .brand{
+      display:flex;
+      align-items:center;
+      gap: 10px;
+      font-weight: 700;
+      letter-spacing: -0.02em;
+    }
+    .dot{
+      width: 10px; height: 10px; border-radius: 99px;
+      background: linear-gradient(135deg, var(--brand), var(--brand-2));
+      box-shadow: 0 0 0 6px rgba(96,165,250,0.12);
+    }
+    .nav{
+      display:flex;
+      gap: 10px;
+      flex-wrap: wrap;
+      justify-content: flex-end;
+    }
+    .chip{
+      text-decoration:none;
+      font-weight: 600;
+      font-size: 0.95rem;
+      color: var(--muted);
+      padding: 10px 12px;
+      border: 1px solid var(--border);
+      border-radius: 999px;
+      background: color-mix(in oklab, var(--surface) 70%, transparent);
+      transition: transform .15s ease, border-color .15s ease, background .15s ease;
+    }
+    .chip:hover{
+      transform: translateY(-1px);
+      border-color: color-mix(in oklab, var(--brand) 45%, var(--border));
       color: var(--text);
     }
-    header {
-      background: var(--header-bg);
-      color: white;
-      padding: 2rem;
-      text-align: center;
+
+    /* Hero */
+    .hero{
+      display:grid;
+      grid-template-columns: 1.3fr 0.7fr;
+      gap: 18px;
+      align-items: stretch;
+      margin-bottom: 18px;
     }
-    header h1 {
-      margin: 0;
-      font-size: 2.5rem;
-      animation: fadeInDown 1s ease;
-    }
-    header p {
-      margin-top: 0.5rem;
-      font-size: 1.2rem;
-      animation: fadeInUp 1.2s ease;
-    }
-    .container {
-      max-width: 900px;
-      margin: 2rem auto;
-      padding: 0 1rem;
-    }
-    .profile {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 1rem;
-      animation: fadeIn 1s ease;
-    }
-    .profile img {
-      background: var(--header-bg);
-      width: 160px;
-      height: 160px;
-      border-radius: 50%;
-      object-fit: cover;
-      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
-    }
-    .links a {
-      margin: 0 0.5rem;
-      text-decoration: none;
-      color: var(--link);
-      font-weight: 600;
-    }
-    .links a:hover {
-      text-decoration: underline;
-    }
-    .github-feed {
-      margin-top: 1rem;
-    }
-    iframe {
-      border: none;
-      width: 100%;
-      height: 200px;
-      margin-bottom: 2rem;
-    }
-    .projects, .publications {
-      margin-top: 2rem;
-      animation: fadeIn 0.8s ease;
-    }
-    .projects ul, .publications ul {
-      list-style: none;
-      padding: 0;
-    }
-    .projects li, .publications li {
-      margin-bottom: 1rem;
-    }
-    .projects a, .publications a {
-      color: var(--primary);
-      font-weight: 600;
-      text-decoration: none;
-    }
-    .projects a:hover, .publications a:hover {
-      text-decoration: underline;
-    }
-    footer {
-      background: var(--footer-bg);
-      color: white;
-      text-align: center;
-      padding: 1rem;
-      position: fixed;
-      bottom: 0;
-      width: 100%;
-      font-size: 0.9rem;
+    @media (max-width: 880px){
+      .hero{ grid-template-columns: 1fr; }
     }
 
-    @keyframes fadeIn {
-      from { opacity: 0; transform: translateY(20px); }
-      to { opacity: 1; transform: translateY(0); }
+    .card{
+      background: linear-gradient(180deg, color-mix(in oklab, var(--surface) 92%, transparent), var(--surface));
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
     }
-    @keyframes fadeInDown {
-      from { opacity: 0; transform: translateY(-30px); }
-      to { opacity: 1; transform: translateY(0); }
+    .heroMain{
+      padding: 26px;
+      overflow: hidden;
+      position: relative;
     }
-    @keyframes fadeInUp {
-      from { opacity: 0; transform: translateY(30px); }
-      to { opacity: 1; transform: translateY(0); }
+    .heroMain::before{
+      content:"";
+      position:absolute;
+      inset: -80px -120px auto auto;
+      width: 320px; height: 320px;
+      background: radial-gradient(circle at 30% 30%, rgba(96,165,250,0.28), transparent 60%);
+      transform: rotate(10deg);
+      pointer-events:none;
+    }
+    h1{
+      margin: 0 0 10px;
+      font-size: clamp(1.9rem, 3.2vw, 2.6rem);
+      line-height: 1.15;
+      letter-spacing: -0.03em;
+    }
+    .subtitle{
+      margin: 0 0 16px;
+      color: var(--muted);
+      font-size: 1.05rem;
+      max-width: 64ch;
+    }
+    .pillRow{
+      display:flex;
+      gap: 10px;
+      flex-wrap: wrap;
+      margin: 12px 0 18px;
+    }
+    .pill{
+      font-size: 0.92rem;
+      font-weight: 600;
+      color: color-mix(in oklab, var(--text) 85%, var(--muted));
+      border: 1px solid var(--border);
+      padding: 8px 10px;
+      border-radius: 999px;
+      background: color-mix(in oklab, var(--surface-2) 80%, transparent);
+    }
+
+    .ctaRow{
+      display:flex;
+      gap: 10px;
+      flex-wrap: wrap;
+      margin-top: 14px;
+    }
+    .btn{
+      display:inline-flex;
+      align-items:center;
+      gap: 10px;
+      padding: 12px 14px;
+      border-radius: 12px;
+      border: 1px solid var(--border);
+      text-decoration:none;
+      font-weight: 700;
+      transition: transform .15s ease, border-color .15s ease, background .15s ease;
+      background: color-mix(in oklab, var(--surface-2) 70%, transparent);
+      color: var(--text);
+    }
+    .btn:hover{
+      transform: translateY(-1px);
+      border-color: color-mix(in oklab, var(--brand) 55%, var(--border));
+    }
+    .btnPrimary{
+      background: linear-gradient(135deg, var(--brand), var(--brand-2));
+      border-color: transparent;
+      color: white;
+    }
+    .btnPrimary:hover{
+      transform: translateY(-1px);
+      filter: saturate(1.05);
+    }
+
+    .heroSide{
+      padding: 22px;
+      display:flex;
+      flex-direction: column;
+      gap: 14px;
+      justify-content: space-between;
+    }
+    .avatarRow{
+      display:flex;
+      gap: 14px;
+      align-items: center;
+    }
+    .avatar{
+      width: 76px; height: 76px;
+      border-radius: 999px;
+      border: 1px solid var(--border);
+      object-fit: cover;
+      background: linear-gradient(135deg, var(--brand), var(--brand-2));
+    }
+    .meta{
+      display:flex;
+      flex-direction: column;
+      gap: 2px;
+    }
+    .nameSmall{
+      font-weight: 800;
+      letter-spacing: -0.02em;
+    }
+    .metaLine{
+      color: var(--muted);
+      font-size: 0.95rem;
+    }
+    .status{
+      display:flex;
+      align-items:center;
+      gap: 8px;
+      color: var(--muted);
+      font-size: 0.95rem;
+    }
+    .status .live{
+      width: 9px; height: 9px; border-radius: 99px;
+      background: var(--good);
+      box-shadow: 0 0 0 6px color-mix(in oklab, var(--good) 18%, transparent);
+    }
+
+    /* Sections */
+    .section{
+      margin-top: 18px;
+      padding: 20px;
+    }
+    .section h2{
+      margin: 0 0 12px;
+      font-size: 1.25rem;
+      letter-spacing: -0.02em;
+    }
+    .grid{
+      display:grid;
+      grid-template-columns: repeat(12, 1fr);
+      gap: 14px;
+    }
+    .col6{ grid-column: span 6; }
+    .col4{ grid-column: span 4; }
+    .col12{ grid-column: span 12; }
+    @media (max-width: 880px){
+      .col6, .col4 { grid-column: span 12; }
+    }
+
+    .item{
+      padding: 16px;
+      border-radius: 16px;
+      border: 1px solid var(--border);
+      background: color-mix(in oklab, var(--surface-2) 70%, transparent);
+      transition: transform .15s ease, border-color .15s ease;
+      position: relative;
+      overflow: hidden;
+    }
+    .item:hover{
+      transform: translateY(-2px);
+      border-color: color-mix(in oklab, var(--brand) 35%, var(--border));
+    }
+    .itemTitle{
+      display:flex;
+      align-items: baseline;
+      justify-content: space-between;
+      gap: 10px;
+      margin-bottom: 6px;
+    }
+    .itemTitle a{
+      text-decoration:none;
+      font-weight: 800;
+      letter-spacing: -0.01em;
+      color: color-mix(in oklab, var(--text) 92%, var(--muted));
+    }
+    .itemTitle a:hover{ text-decoration: underline; }
+    .tag{
+      font-size: 0.82rem;
+      font-weight: 700;
+      color: var(--muted);
+      border: 1px solid var(--border);
+      padding: 4px 8px;
+      border-radius: 999px;
+      white-space: nowrap;
+      background: color-mix(in oklab, var(--surface) 75%, transparent);
+    }
+    .item p{
+      margin: 0;
+      color: var(--muted);
+      font-size: 0.98rem;
+    }
+
+    .note{
+      margin-top: 10px;
+      color: var(--muted);
+      font-size: 0.95rem;
+    }
+
+    /* Footer */
+    footer{
+      margin-top: 18px;
+      padding: 18px 6px 0;
+      color: var(--muted);
+      font-size: 0.95rem;
+      text-align: center;
+    }
+
+    /* Motion accessibility */
+    @media (prefers-reduced-motion: reduce){
+      * { scroll-behavior: auto !important; transition: none !important; animation: none !important; }
     }
   </style>
 </head>
+
 <body>
-  <header>
-    <h1>Michael Hirschmugl</h1>
-    <p>I enjoy developing firmware and hardware, working with Linux, and exploring retro video game consoles.</p>
-  </header>
+  <div class="wrap">
+    <div class="top">
+      <div class="brand">
+        <span class="dot" aria-hidden="true"></span>
+        <span>Portfolio</span>
+      </div>
 
-  <div class="container">
-    <div class="profile">
-      <img src="1682500510300-removebg-preview.png" alt="Profile photo">
-      <p>Welcome to my portfolio. Here you'll find information about my projects, publications, and current activities.</p>
+      <nav class="nav" aria-label="Primary">
+        <a class="chip" href="#projects">Projects</a>
+        <a class="chip" href="#publications">Publications</a>
+        <a class="chip" href="#links">Links</a>
+      </nav>
     </div>
 
-    <div class="links">
-      <h2>Links</h2>
-      <p>
-        <a href="https://github.com/michael-hirschmugl" target="_blank">GitHub</a>
-        <a href="https://www.linkedin.com/in/michael-hirschmugl/" target="_blank">LinkedIn</a>
-        <a href="https://ieeexplore.ieee.org/author/37089575377" target="_blank">IEEE Xplore</a>
+    <section class="hero" aria-label="Introduction">
+      <div class="card heroMain">
+        <h1>Michael Hirschmugl</h1>
+        <p class="subtitle">
+          Embedded Systems Engineer working across firmware, hardware, and system integration —
+          with a research background in hardware-efficient ML (quantization & CNN acceleration).
+        </p>
+
+        <div class="pillRow" aria-label="Key skills">
+          <span class="pill">C / C++</span>
+          <span class="pill">ARM / STM32</span>
+          <span class="pill">Linux</span>
+          <span class="pill">VHDL / FPGA</span>
+          <span class="pill">RISC-V</span>
+          <span class="pill">Edge AI & HW/SW Co-design</span>
+        </div>
+
+        <div class="ctaRow">
+          <a class="btn btnPrimary" href="https://www.linkedin.com/in/michael-hirschmugl/" target="_blank" rel="noopener">
+            LinkedIn
+          </a>
+          <a class="btn" href="https://github.com/michael-hirschmugl" target="_blank" rel="noopener">
+            GitHub
+          </a>
+          <a class="btn" href="https://ieeexplore.ieee.org/author/37089575377" target="_blank" rel="noopener">
+            IEEE Xplore
+          </a>
+        </div>
+
+        <p class="note">
+          I like building practical systems: from real-time firmware to hardware prototypes — and occasionally retro-console hacks.
+        </p>
+      </div>
+
+      <aside class="card heroSide">
+        <div class="avatarRow">
+          <img class="avatar" src="1682500510300-removebg-preview.png" alt="Portrait photo of Michael Hirschmugl" />
+          <div class="meta">
+            <div class="nameSmall">Embedded & FPGA Engineer</div>
+            <div class="metaLine">Graz, Austria</div>
+            <div class="metaLine">Automotive / ADAS tooling & embedded systems</div>
+          </div>
+        </div>
+
+        <div class="status" aria-label="Status">
+          <span class="live" aria-hidden="true"></span>
+          <span>Currently working in industry — interested in technically challenging embedded roles.</span>
+        </div>
+      </aside>
+    </section>
+
+    <section id="projects" class="card section" aria-label="Projects">
+      <h2>Selected Projects</h2>
+
+      <div class="grid">
+        <div class="item col6">
+          <div class="itemTitle">
+            <a href="https://github.com/michael-hirschmugl/open-hw-cnn" target="_blank" rel="noopener">open-hw-cnn</a>
+            <span class="tag">FPGA / CNN</span>
+          </div>
+          <p>Open-source hardware accelerator framework for convolutional neural networks on FPGAs.</p>
+        </div>
+
+        <div class="item col6">
+          <div class="itemTitle">
+            <a href="https://github.com/michael-hirschmugl/sun_follower" target="_blank" rel="noopener">sun_follower</a>
+            <span class="tag">FreeRTOS</span>
+          </div>
+          <p>Embedded firmware to track and follow sunlight using motorized hardware (control + sensors).</p>
+        </div>
+
+        <div class="item col6">
+          <div class="itemTitle">
+            <a href="https://hackaday.io/project/162633-snes-drone" target="_blank" rel="noopener">SNES-Drone</a>
+            <span class="tag">Hardware</span>
+          </div>
+          <p>Custom cartridge turning the SNES sound chip (SPC700) into a drone synthesizer.</p>
+        </div>
+
+        <div class="item col6">
+          <div class="itemTitle">
+            <a href="https://github.com/michael-hirschmugl/ps2-blueretro" target="_blank" rel="noopener">PS2 BlueRetro</a>
+            <span class="tag">ESP32</span>
+          </div>
+          <p>Hardware mod to add Bluetooth gamepad support to the PlayStation 2 using an ESP32-based adapter.</p>
+        </div>
+      </div>
+
+      <p class="note">
+        Tip: If you want recruiters to “get it” fast, keep 3–5 projects here and make them your best proof of work.
       </p>
-    </div>
+    </section>
 
-    <div class="projects">
-      <h2>Interesting Projects</h2>
-      <ul>
-        <li>
-          <a href="https://hackaday.io/project/162633-snes-drone" target="_blank">SNES-Drone</a><br>
-          A creative hardware project turning the Super Nintendo's sound chip (SPC700) into a drone synthesizer using a custom cartridge.
-        </li>
-        <li>
-          <a href="https://github.com/michael-hirschmugl/ps2-blueretro" target="_blank">PS2 BlueRetro</a><br>
-          A hardware mod to add Bluetooth gamepad support to the PlayStation 2 using an ESP32-based adapter.
-        </li>
-        <li>
-          <a href="https://github.com/michael-hirschmugl/SNESDRONE" target="_blank">SNESDRONE</a><br>
-          A project to control the SNES sound chip via custom cartridges for real-time music synthesis.
-        </li>
-        <li>
-          <a href="https://github.com/michael-hirschmugl/open-hw-cnn" target="_blank">open-hw-cnn</a><br>
-          An open-source hardware accelerator framework for convolutional neural networks on FPGAs.
-        </li>
-        <li>
-          <a href="https://github.com/michael-hirschmugl/sun_follower" target="_blank">sun_follower</a><br>
-          A FreeRTOS-based embedded firmware project to track and follow sunlight using motorized hardware.
-        </li>
-      </ul>
-    </div>
-
-    <div class="publications">
+    <section id="publications" class="card section" aria-label="Publications">
       <h2>Publications</h2>
-      <ul>
-        <li><a href="https://ieeexplore.ieee.org/document/10742172" target="_blank">Design and implementation of a calibration solution for automotive RADAR sensors</a></li>
-        <li><a href="https://ieeexplore.ieee.org/document/10632521" target="_blank">Standardized and flexible hardware platform for testing automotive calibration devices</a></li>
-        <li><a href="https://ieeexplore.ieee.org/document/9924640" target="_blank">Portable hardware and software platform for testing communication and control of ADAS calibration devices</a></li>
-      </ul>
-    </div>
 
-    <div class="github-feed">
-      <h2>GitHub Activity</h2>
-      <iframe src="https://github-readme-stats.vercel.app/api?username=michael-hirschmugl&show_icons=true&theme=default" allowtransparency="true"></iframe>
-    </div>
+      <div class="grid">
+        <div class="item col12">
+          <div class="itemTitle">
+            <a href="https://ieeexplore.ieee.org/document/10742172" target="_blank" rel="noopener">
+              Design and implementation of a calibration solution for automotive RADAR sensors
+            </a>
+            <span class="tag">IEEE</span>
+          </div>
+          <p>Calibration solution design for automotive radar sensors.</p>
+        </div>
+
+        <div class="item col12">
+          <div class="itemTitle">
+            <a href="https://ieeexplore.ieee.org/document/10632521" target="_blank" rel="noopener">
+              Standardized and flexible hardware platform for testing automotive calibration devices
+            </a>
+            <span class="tag">IEEE</span>
+          </div>
+          <p>Hardware platform enabling standardized testing of calibration devices.</p>
+        </div>
+
+        <div class="item col12">
+          <div class="itemTitle">
+            <a href="https://ieeexplore.ieee.org/document/9924640" target="_blank" rel="noopener">
+              Portable hardware and software platform for testing communication and control of ADAS calibration devices
+            </a>
+            <span class="tag">IEEE</span>
+          </div>
+          <p>Portable HW/SW platform for communication/control testing in ADAS calibration tooling.</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="links" class="card section" aria-label="Links">
+      <h2>Links</h2>
+      <div class="grid">
+        <div class="item col4">
+          <div class="itemTitle">
+            <a href="https://github.com/michael-hirschmugl" target="_blank" rel="noopener">GitHub</a>
+            <span class="tag">Code</span>
+          </div>
+          <p>Repositories, prototypes, and experiments.</p>
+        </div>
+        <div class="item col4">
+          <div class="itemTitle">
+            <a href="https://www.linkedin.com/in/michael-hirschmugl/" target="_blank" rel="noopener">LinkedIn</a>
+            <span class="tag">Profile</span>
+          </div>
+          <p>Professional experience and contact.</p>
+        </div>
+        <div class="item col4">
+          <div class="itemTitle">
+            <a href="https://ieeexplore.ieee.org/author/37089575377" target="_blank" rel="noopener">IEEE Xplore</a>
+            <span class="tag">Papers</span>
+          </div>
+          <p>Publication list.</p>
+        </div>
+      </div>
+
+      <p class="note">
+        About the GitHub widget: if your current embed is “paused by owner” (Vercel), either re-enable that deployment
+        or replace it with a simple GitHub link — the page should still look complete without an iframe.
+      </p>
+    </section>
+
+    <footer>
+      © <span id="year"></span> Michael Hirschmugl — Built with plain HTML/CSS.
+    </footer>
   </div>
 
-  <footer>
-    &copy; 2025 Michael Hirschmugl. All rights reserved.
-  </footer>
+  <script>
+    // Tiny enhancement: keep footer year correct
+    document.getElementById("year").textContent = new Date().getFullYear();
+  </script>
 </body>
 </html>
