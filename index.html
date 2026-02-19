@@ -155,7 +155,7 @@
       margin: 0 0 16px;
       color: var(--muted);
       font-size: 1.05rem;
-      max-width: 64ch;
+      max-width: 72ch;
     }
     .pillRow{
       display:flex;
@@ -322,7 +322,6 @@
       font-size: 0.95rem;
     }
 
-    /* Footer */
     footer{
       margin-top: 18px;
       padding: 18px 6px 0;
@@ -331,7 +330,6 @@
       text-align: center;
     }
 
-    /* Motion accessibility */
     @media (prefers-reduced-motion: reduce){
       * { scroll-behavior: auto !important; transition: none !important; animation: none !important; }
     }
@@ -383,7 +381,7 @@
         </div>
 
         <p class="note">
-          I like building practical systems: from real-time firmware to hardware prototypes — and occasionally retro-console hacks.
+          I like building practical systems: from real-time firmware to hardware prototypes — and occasionally retro-console hardware.
         </p>
       </div>
 
@@ -418,31 +416,23 @@
 
         <div class="item col6">
           <div class="itemTitle">
-            <a href="https://github.com/michael-hirschmugl/sun_follower" target="_blank" rel="noopener">sun_follower</a>
-            <span class="tag">FreeRTOS</span>
+            <a href="https://github.com/michael-hirschmugl/pipelined-dot-engine" target="_blank" rel="noopener">pipelined-dot-engine</a>
+            <span class="tag">VHDL / SV</span>
           </div>
-          <p>Embedded firmware to track and follow sunlight using motorized hardware (control + sensors).</p>
+          <p>Pipelined dot-product engine (DOT) built around the reusable MAC core. Separate branches for VHDL and SystemVerilog implementations.</p>
         </div>
 
-        <div class="item col6">
+        <div class="item col12">
           <div class="itemTitle">
             <a href="https://hackaday.io/project/162633-snes-drone" target="_blank" rel="noopener">SNES-Drone</a>
             <span class="tag">Hardware</span>
           </div>
-          <p>Custom cartridge turning the SNES sound chip (SPC700) into a drone synthesizer.</p>
-        </div>
-
-        <div class="item col6">
-          <div class="itemTitle">
-            <a href="https://github.com/michael-hirschmugl/ps2-blueretro" target="_blank" rel="noopener">PS2 BlueRetro</a>
-            <span class="tag">ESP32</span>
-          </div>
-          <p>Hardware mod to add Bluetooth gamepad support to the PlayStation 2 using an ESP32-based adapter.</p>
+          <p>A creative hardware project turning the Super Nintendo's sound chip (SPC700) into a drone synthesizer using a custom cartridge.</p>
         </div>
       </div>
 
       <p class="note">
-        Tip: If you want recruiters to “get it” fast, keep 3–5 projects here and make them your best proof of work.
+        These projects highlight my interest in practical HW/SW co-design — from reusable compute blocks to complete embedded hardware builds.
       </p>
     </section>
 
@@ -450,6 +440,16 @@
       <h2>Publications</h2>
 
       <div class="grid">
+        <div class="item col12">
+          <div class="itemTitle">
+            <a href="https://ieeexplore.ieee.org/document/9924640" target="_blank" rel="noopener">
+              Fast and resource-efficient CNNs for Radar Interference Mitigation on Embedded Hardware
+            </a>
+            <span class="tag">IEEE</span>
+          </div>
+          <p>Lead author. Hardware-efficient CNN inference for automotive radar interference mitigation, analyzing latency, memory, and power trade-offs across CPU, fixed-point firmware, and FPGA acceleration.</p>
+        </div>
+
         <div class="item col12">
           <div class="itemTitle">
             <a href="https://ieeexplore.ieee.org/document/10742172" target="_blank" rel="noopener">
@@ -469,17 +469,11 @@
           </div>
           <p>Hardware platform enabling standardized testing of calibration devices.</p>
         </div>
-
-        <div class="item col12">
-          <div class="itemTitle">
-            <a href="https://ieeexplore.ieee.org/document/9924640" target="_blank" rel="noopener">
-              Portable hardware and software platform for testing communication and control of ADAS calibration devices
-            </a>
-            <span class="tag">IEEE</span>
-          </div>
-          <p>Portable HW/SW platform for communication/control testing in ADAS calibration tooling.</p>
-        </div>
       </div>
+
+      <p class="note">
+        Full publication list is available on IEEE Xplore.
+      </p>
     </section>
 
     <section id="links" class="card section" aria-label="Links">
@@ -507,11 +501,6 @@
           <p>Publication list.</p>
         </div>
       </div>
-
-      <p class="note">
-        About the GitHub widget: if your current embed is “paused by owner” (Vercel), either re-enable that deployment
-        or replace it with a simple GitHub link — the page should still look complete without an iframe.
-      </p>
     </section>
 
     <footer>
@@ -520,7 +509,6 @@
   </div>
 
   <script>
-    // Tiny enhancement: keep footer year correct
     document.getElementById("year").textContent = new Date().getFullYear();
   </script>
 </body>
