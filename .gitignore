@@ -17,3 +17,9 @@ desktop.ini
 
 # Logs
 *.log
+
+# Claude Code / Agenten — self-contained: Projektwissen IST versioniert.
+# NICHT ignorieren: CLAUDE.md, AGENTS.md, .claude/memory/, .claude/commands/,
+# .claude/skills/, .claude/settings.json
+# Nur Maschinenspezifisches bleibt lokal:
+.claude/settings.local.json

@@ -187,6 +187,53 @@
       text-overflow: ellipsis;
     }
 
+    /* ── Tabelle (Backup-Übersicht) ── */
+    .table-wrap {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      overflow-x: auto;
+    }
+    table.data {
+      width: 100%;
+      min-width: 540px;
+      border-collapse: collapse;
+      font-size: 0.8rem;
+    }
+    table.data th,
+    table.data td {
+      text-align: left;
+      padding: 0.65rem 1rem;
+      border-bottom: 1px solid var(--border);
+      white-space: nowrap;
+    }
+    table.data th {
+      font-size: 0.68rem;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--muted);
+    }
+    table.data tr:last-child td { border-bottom: none; }
+    table.data td.mono {
+      font-family: 'SF Mono', 'Fira Code', monospace;
+      color: var(--muted);
+    }
+
+    .section-note {
+      font-size: 0.75rem;
+      color: var(--muted);
+      line-height: 1.5;
+      margin-top: 0.75rem;
+    }
+    .section-note code {
+      font-family: 'SF Mono', 'Fira Code', monospace;
+      background: var(--surface2);
+      padding: 1px 5px;
+      border-radius: 5px;
+      color: var(--text);
+    }
+
     /* Mode visibility – homelab cards only */
     .local-mode .card[data-local]   { display: flex; }
     .extern-mode .card[data-extern] { display: flex; }
@@ -360,18 +407,6 @@
         <div class="card-url" data-url></div>
       </a>
 
-      <a class="card" style="--card-accent:#f25f5c"
-         data-local="http://192.168.0.97/admin"
-         data-no-extern>
-        <div class="card-top">
-          <div class="card-icon">🛡️</div>
-          <span class="card-badge badge-only" data-badge>Nur lokal</span>
-        </div>
-        <div class="card-name">Pi-hole</div>
-        <div class="card-desc">DNS Ad-Blocker · CT 112</div>
-        <div class="card-url" data-url></div>
-      </a>
-
       <a class="card" style="--card-accent:#6c757d"
          data-local="http://192.168.0.196"
          data-no-extern>
@@ -524,30 +559,38 @@
         <div class="card-url" data-url></div>
       </a>
 
-      <a class="card" style="--card-accent:#8b5cf6"
-         data-local="http://192.168.0.54:3080"
-         data-no-extern>
+    </div>
+  </div>
+
+  <!-- ── Claude Code Container ── -->
+  <div class="section">
+    <div class="section-title">Claude Code Container</div>
+    <div class="cards">
+
+      <a class="card" style="--card-accent:#d97757" href="https://claude.ai/code" target="_blank">
         <div class="card-top">
-          <div class="card-icon">🤖</div>
-          <span class="card-badge badge-only" data-badge>Nur lokal</span>
+          <div class="card-icon">💰</div>
+          <span class="card-badge badge-extern">Remote</span>
         </div>
-        <div class="card-name">LibreChat</div>
-        <div class="card-desc">KI-Chat Interface · CT 110</div>
-        <div class="card-url" data-url></div>
+        <div class="card-name">Budget</div>
+        <div class="card-desc">Claude Code im Remote-Modus · CT 107 · 192.168.0.164</div>
+        <div class="card-url">claude.ai/code</div>
       </a>
 
-      <a class="card" style="--card-accent:#ea4b71"
-         data-local="http://192.168.0.209:5678/"
-         data-no-extern>
+      <a class="card" style="--card-accent:#d97757" href="https://claude.ai/code" target="_blank">
         <div class="card-top">
-          <div class="card-icon">🔗</div>
-          <span class="card-badge badge-only" data-badge>Nur lokal</span>
+          <div class="card-icon">🩺</div>
+          <span class="card-badge badge-extern">Remote</span>
         </div>
-        <div class="card-name">n8n</div>
-        <div class="card-desc">Workflow-Automatisierung</div>
-        <div class="card-url" data-url></div>
+        <div class="card-name">Health Tracker</div>
+        <div class="card-desc">Claude Code im Remote-Modus · CT 115 · 192.168.0.72</div>
+        <div class="card-url">claude.ai/code</div>
       </a>
 
+    </div>
+    <div class="section-note">
+      Kein Webdienst — auf beiden Containern läuft eine Claude-Code-Instanz, die sich
+      per Script in den Remote-Modus versetzt und ab dann über claude.ai gesteuert wird.
     </div>
   </div>
 
@@ -568,6 +611,54 @@
         <div class="card-url" data-url></div>
       </a>
 
+    </div>
+  </div>
+
+  <!-- ── Backups ── -->
+  <div class="section">
+    <div class="section-title">Backups</div>
+    <div class="table-wrap">
+      <table class="data">
+        <thead>
+          <tr>
+            <th>Storage</th>
+            <th>Quelle</th>
+            <th>Backups</th>
+            <th>Neuestes</th>
+            <th>Größe</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td class="mono">immich-lxc-backup</td>
+            <td>CT 106 · immich</td>
+            <td>7</td>
+            <td class="mono">2026-07-31</td>
+            <td>2.68 GB</td>
+          </tr>
+          <tr>
+            <td class="mono">nextcloud-lxc-backup</td>
+            <td>CT 100 · nextcloudpi</td>
+            <td>5</td>
+            <td class="mono">2026-04-16</td>
+            <td>1.07 GB</td>
+          </tr>
+          <tr>
+            <td class="mono">obsidian-lxc-backup</td>
+            <td>CT 103 · obsidian</td>
+            <td>—</td>
+            <td class="mono">—</td>
+            <td>—</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="section-note">
+      vzdump-Snapshots auf der 16-TB-HDD (<code>/dev/sdc</code>). Die Platte ist im
+      Normalbetrieb schlafen gelegt — zum Ansehen oder Wiederherstellen erst auf dem
+      Host einschalten: <code>/root/scripts/manage-hdd-1-new.sh</code> (Toggle:
+      mountet <code>/mnt/hdd-1</code> bzw. hängt aus und fährt die Platte herunter).
+      Stand: 2026-08-03.
     </div>
   </div>
 
