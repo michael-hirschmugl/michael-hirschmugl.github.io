@@ -18,8 +18,11 @@ desktop.ini
 # Logs
 *.log
 
-# Claude Code / Agenten — self-contained: Projektwissen IST versioniert.
-# NICHT ignorieren: CLAUDE.md, AGENTS.md, .claude/memory/, .claude/commands/,
-# .claude/skills/, .claude/settings.json
-# Nur Maschinenspezifisches bleibt lokal:
-.claude/settings.local.json
+# Claude Code / Agenten — bewusst NICHT versioniert.
+# Dieses Repo ist öffentlich (GitHub Pages, www.michael-hirschmugl.com);
+# public bleiben dürfen nur die Website-Dateien selbst.
+# Projektwissen liegt nur lokal in diesem Arbeitsverzeichnis.
+.claude/
+CLAUDE.md
+AGENTS.md
+diaries/
